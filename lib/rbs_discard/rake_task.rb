@@ -11,7 +11,7 @@ module RbsDiscard
       super()
 
       @name = name
-      @signature_root_dir = Rails.root / "sig"
+      @signature_root_dir = Rails.root / "sig/discard"
 
       block&.call(self)
 
