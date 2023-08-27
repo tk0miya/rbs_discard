@@ -30,6 +30,8 @@ module RbsDiscard
     def define_generate_task
       desc "Generate RBS files for discardable models"
       task "#{name}:generate" do
+        Rails.application.eager_load!
+
         RbsDiscard::Discard.all.each do |klass|
           rbs = RbsDiscard::Discard.class_to_rbs(klass)
           path = signature_root_dir / "#{klass.name.underscore}.rbs"
