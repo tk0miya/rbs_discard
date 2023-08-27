@@ -12,5 +12,12 @@ Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
 
+Layout/BlockLength:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
 Layout/LineLength:
   Max: 120
+
+Layout/MethodLength:
+  Max: 20

@@ -1,0 +1,27 @@
+module Discard
+  module Model
+    module ClassMethods
+      def before_discard: (*untyped) ? { () -> void } -> void
+      def after_discard: (*untyped) ? { () -> void } -> void
+      def discard_all: () -> void
+      def discard_all!: () -> void
+      def undiscard_all: () -> void
+      def undiscard_all!: () -> void
+    end
+
+    module Relation
+      def kept: () -> self
+      def with_discarded: () -> self
+      def discard_all: () -> void
+      def discard_all!: () -> void
+      def undiscard_all: () -> void
+      def undiscard_all!: () -> void
+    end
+
+    def discard: () -> bool
+    def discard!: () -> void
+    def discarded?: () -> bool
+    def undiscarded?: () -> bool
+    def kept?: () -> bool
+  end
+end

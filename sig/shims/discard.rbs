@@ -1,0 +1,4 @@
+module Discard
+  module Model
+  end
+end
