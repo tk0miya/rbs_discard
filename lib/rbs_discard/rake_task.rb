@@ -16,6 +16,7 @@ module RbsDiscard
       block&.call(self)
 
       define_clean_task
+      define_generate_base_class_task
       define_generate_task
       define_setup_task
     end
@@ -23,8 +24,17 @@ module RbsDiscard
     def define_setup_task
       desc "Run all tasks of rbs_discard"
 
-      deps = [:"#{name}:clean", :"#{name}:generate"]
+      deps = [:"#{name}:clean", :"#{name}:base_class:generate", :"#{name}:generate"]
       task("#{name}:setup" => deps)
+    end
+
+    def define_generate_base_class_task
+      desc "Generate RBS files for base classes"
+      task "#{name}:base_class:generate": :environment do
+        signature_root_dir.mkpath
+        basedir = Pathname(__FILE__).dirname
+        FileUtils.cp basedir / "sig/discard.rbs", signature_root_dir
+      end
     end
 
     def define_generate_task
@@ -36,7 +46,7 @@ module RbsDiscard
 
         RbsDiscard::Discard.all.each do |klass|
           rbs = RbsDiscard::Discard.class_to_rbs(klass)
-          path = signature_root_dir / "#{klass.name.underscore}.rbs"
+          path = signature_root_dir / "app/models/#{klass.name.underscore}.rbs"
           path.dirname.mkpath
           path.write(rbs)
         end
