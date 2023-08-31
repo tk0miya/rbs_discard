@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rbs_discard (0.1.0)
+    rbs_discard (0.2.0)
       discard
       rbs_rails
 
