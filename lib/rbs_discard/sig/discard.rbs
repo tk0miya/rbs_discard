@@ -1,8 +1,10 @@
 module Discard
   module Model
     module ClassMethods
-      def before_discard: (*untyped) ? { () -> void } -> void
-      def after_discard: (*untyped) ? { () -> void } -> void
+      type callback = Symbol | ^() [self: instance] -> void
+
+      def before_discard: (*callback) ? { () [self: instance] -> void } -> void
+      def after_discard: (*callback) ? { () [self: instance] -> void } -> void
       def discard_all: () -> void
       def discard_all!: () -> void
       def undiscard_all: () -> void
