@@ -47,7 +47,7 @@ module RbsDiscard
 
         RbsDiscard::Discard.all.each do |klass|
           rbs = RbsDiscard::Discard.class_to_rbs(klass)
-          path = signature_root_dir / "app/models/#{klass.name.underscore}.rbs"
+          path = signature_root_dir / "app/models/#{klass.name.to_s.underscore}.rbs"
           path.dirname.mkpath
           path.write(rbs)
         end
