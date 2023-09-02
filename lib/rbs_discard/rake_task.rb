@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "activesupport"
 require "pathname"
 require "rake/tasklib"
 

@@ -12,7 +12,7 @@ module RbsDiscard
 
       private
 
-      def klass_decl: () -> String
+      def format: (String rbs) -> String
       def header: () -> String
       def footer: () -> String
     end
