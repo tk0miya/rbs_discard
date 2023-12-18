@@ -76,7 +76,6 @@ GEM
     ast (2.4.2)
     base64 (0.1.1)
     builder (3.2.4)
-    coderay (1.1.3)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     csv (3.2.7)
@@ -127,9 +126,6 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
-    pry (0.14.2)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
     racc (1.7.1)
     rack (2.2.8)
     rack-test (2.1.0)
@@ -176,8 +172,7 @@ GEM
       rspec-mocks (~> 3.12.0)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-daemon (0.1.5)
-      pry
+    rspec-daemon (1.1.1)
       rspec
     rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
