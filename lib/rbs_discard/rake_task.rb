@@ -41,7 +41,7 @@ module RbsDiscard
     def define_generate_task
       desc "Generate RBS files for discardable models"
       task "#{name}:generate" do
-        require "rbs_discard"  # load RbsDraper lazily
+        require "rbs_discard" # load RbsDraper lazily
 
         Rails.application.eager_load!
 
