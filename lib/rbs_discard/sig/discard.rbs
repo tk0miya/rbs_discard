@@ -3,6 +3,9 @@ module Discard
     module ClassMethods
       type callback = Symbol | ^() [self: instance] -> void
 
+      def discard_column: () -> Symbol
+      def discard_column=: (Symbol) -> Symbol
+
       def before_discard: (*callback) ? { () [self: instance] -> void } -> void
       def after_discard: (*callback) ? { () [self: instance] -> void } -> void
       def discard_all: () -> void
@@ -21,6 +24,9 @@ module Discard
       def undiscard_all: () -> void
       def undiscard_all!: () -> void
     end
+
+    def discard_column: () -> Symbol
+    def discard_column=: (Symbol) -> Symbol
 
     def discard: () -> bool
     def discard!: () -> void
