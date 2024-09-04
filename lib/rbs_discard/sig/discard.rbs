@@ -13,6 +13,8 @@ module Discard
 
     module Relation
       def kept: () -> self
+      def undiscarded: () -> self
+      def discarded: () -> self
       def with_discarded: () -> self
       def discard_all: () -> void
       def discard_all!: () -> void

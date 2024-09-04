@@ -37,6 +37,8 @@ RSpec.describe RbsDiscard::Discard do
           extend Discard::Model::ClassMethods
 
           def self.kept: () -> Account::ActiveRecord_Relation
+          def self.undiscarded: () -> Account::ActiveRecord_Relation
+          def self.discarded: () -> Account::ActiveRecord_Relation
           def self.with_discarded: () -> Account::ActiveRecord_Relation
         end
       RBS
