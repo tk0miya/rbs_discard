@@ -39,6 +39,8 @@ module RbsDiscard
             extend Discard::Model::ClassMethods
 
             def self.kept: () -> #{klass_name}::ActiveRecord_Relation
+            def self.undiscarded: () -> #{klass_name}::ActiveRecord_Relation
+            def self.discarded: () -> #{klass_name}::ActiveRecord_Relation
             def self.with_discarded: () -> #{klass_name}::ActiveRecord_Relation
           #{footer}
         RBS
