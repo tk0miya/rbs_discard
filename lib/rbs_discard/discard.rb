@@ -38,11 +38,6 @@ module RbsDiscard
             include Discard::Model
             extend Discard::Model::ClassMethods
 
-            def self.discard_column: () -> Symbol
-            def self.discard_column=: (Symbol) -> Symbol
-            def discard_column: () -> Symbol
-            def discard_column=: (Symbol) -> Symbol
-
             def self.kept: () -> #{klass_name}::ActiveRecord_Relation
             def self.undiscarded: () -> #{klass_name}::ActiveRecord_Relation
             def self.discarded: () -> #{klass_name}::ActiveRecord_Relation
