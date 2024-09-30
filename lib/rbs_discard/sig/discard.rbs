@@ -31,7 +31,9 @@ module Discard
     def discard: () -> bool
     def discard!: () -> void
     def discarded?: () -> bool
+    def undiscard: () -> bool
+    def undiscard!: () -> bool
     def undiscarded?: () -> bool
-    def kept?: () -> bool
+    alias kept? undiscarded?
   end
 end
