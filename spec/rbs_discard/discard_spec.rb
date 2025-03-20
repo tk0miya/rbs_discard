@@ -24,22 +24,24 @@ RSpec.describe RbsDiscard::Discard do
 
     it "generates RBS" do
       is_expected.to eq(<<~RBS)
+        # resolve-type-names: false
+
         class Account < ::ActiveRecord::Base
           class ActiveRecord_Relation
-            include Discard::Model::Relation
+            include ::Discard::Model::Relation
           end
 
           class ActiveRecord_Associations_CollectionProxy
-            include Discard::Model::Relation
+            include ::Discard::Model::Relation
           end
 
-          include Discard::Model
-          extend Discard::Model::ClassMethods
+          include ::Discard::Model
+          extend ::Discard::Model::ClassMethods
 
-          def self.kept: () -> Account::ActiveRecord_Relation
-          def self.undiscarded: () -> Account::ActiveRecord_Relation
-          def self.discarded: () -> Account::ActiveRecord_Relation
-          def self.with_discarded: () -> Account::ActiveRecord_Relation
+          def self.kept: () -> ::Account::ActiveRecord_Relation
+          def self.undiscarded: () -> ::Account::ActiveRecord_Relation
+          def self.discarded: () -> ::Account::ActiveRecord_Relation
+          def self.with_discarded: () -> ::Account::ActiveRecord_Relation
         end
       RBS
     end
