@@ -26,22 +26,24 @@ module RbsDiscard
 
       def generate
         format <<~RBS
+          # resolve-type-names: false
+
           #{header}
             class ActiveRecord_Relation
-              include Discard::Model::Relation
+              include ::Discard::Model::Relation
             end
 
             class ActiveRecord_Associations_CollectionProxy
-              include Discard::Model::Relation
+              include ::Discard::Model::Relation
             end
 
-            include Discard::Model
-            extend Discard::Model::ClassMethods
+            include ::Discard::Model
+            extend ::Discard::Model::ClassMethods
 
-            def self.kept: () -> #{klass_name}::ActiveRecord_Relation
-            def self.undiscarded: () -> #{klass_name}::ActiveRecord_Relation
-            def self.discarded: () -> #{klass_name}::ActiveRecord_Relation
-            def self.with_discarded: () -> #{klass_name}::ActiveRecord_Relation
+            def self.kept: () -> ::#{klass_name}::ActiveRecord_Relation
+            def self.undiscarded: () -> ::#{klass_name}::ActiveRecord_Relation
+            def self.discarded: () -> ::#{klass_name}::ActiveRecord_Relation
+            def self.with_discarded: () -> ::#{klass_name}::ActiveRecord_Relation
           #{footer}
         RBS
       end
@@ -64,7 +66,7 @@ module RbsDiscard
           when Class
             # @type var superclass: Class
             superclass = _ = mod_object.superclass
-            superclass_name = superclass.name || "Object"
+            superclass_name = superclass.name || "::Object"
 
             "class #{mod_name} < ::#{superclass_name}"
           when Module
