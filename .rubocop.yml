@@ -16,6 +16,10 @@ Layout/BlockLength:
   Exclude:
     - "spec/**/*_spec.rb"
 
+Layout/LeadingCommentSpace:
+  AllowRBSInlineAnnotation: true
+  AllowSteepAnnotation: true
+
 Layout/LineLength:
   Max: 120
 

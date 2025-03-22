@@ -1,3 +1,5 @@
+# Generated from lib/generators/rbs_discard/install_generator.rb with RBS::Inline
+
 module RbsDiscard
   class InstallGenerator < ::Rails::Generators::Base
     def create_raketask: () -> void

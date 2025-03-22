@@ -1,0 +1,5 @@
+# Generated from lib/rbs_discard/version.rb with RBS::Inline
+
+module RbsDiscard
+  VERSION: ::String
+end
