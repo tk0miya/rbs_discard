@@ -1,0 +1,8 @@
+# Generated from lib/rbs_discard/utils.rb with RBS::Inline
+
+module RbsDiscard
+  module Utils
+    # @rbs klass_name: singleton(Object)
+    def klass_to_names: (untyped klass) -> Array[RBS::TypeName]
+  end
+end

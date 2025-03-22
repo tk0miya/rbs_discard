@@ -8,6 +8,8 @@ module RbsDiscard
     def self.class_to_rbs: (singleton(Discard::Model) klass) -> String
 
     class Generator
+      include Utils
+
       attr_reader klass: singleton(Discard::Model)
 
       attr_reader klass_name: String
