@@ -3,7 +3,7 @@
 require "rbs_discard"
 
 RSpec.describe RbsDiscard::Utils do
-  include RbsDiscard::Utils
+  include described_class
 
   describe "#klass_to_names" do
     subject { klass_to_names(klass) }
@@ -16,11 +16,11 @@ RSpec.describe RbsDiscard::Utils do
     let(:klass_name) { "Foo::Bar::Baz" }
 
     it "returns RBS type names" do
-      is_expected.to eq([
-                          RBS::TypeName.parse("::Foo"),
-                          RBS::TypeName.parse("::Foo::Bar"),
-                          RBS::TypeName.parse("::Foo::Bar::Baz")
-                        ])
+      expect(subject).to eq([
+                              RBS::TypeName.parse("::Foo"),
+                              RBS::TypeName.parse("::Foo::Bar"),
+                              RBS::TypeName.parse("::Foo::Bar::Baz")
+                            ])
     end
   end
 end
