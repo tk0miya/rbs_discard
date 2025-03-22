@@ -6,9 +6,12 @@ require "rake/tasklib"
 
 module RbsDiscard
   class RakeTask < Rake::TaskLib
-    attr_accessor :name, :signature_root_dir
+    attr_accessor :name #: Symbol
+    attr_accessor :signature_root_dir #: Pathname
 
-    def initialize(name = :"rbs:discard", &block)
+    # @rbs name: Symbol
+    # @rbs &block: ?(RakeTask) -> void
+    def initialize(name = :"rbs:discard", &block) #: void
       super()
 
       @name = name
@@ -22,14 +25,14 @@ module RbsDiscard
       define_setup_task
     end
 
-    def define_setup_task
+    def define_setup_task #: void
       desc "Run all tasks of rbs_discard"
 
       deps = [:"#{name}:clean", :"#{name}:base_class:generate", :"#{name}:generate"]
       task("#{name}:setup" => deps)
     end
 
-    def define_generate_base_class_task
+    def define_generate_base_class_task #: void
       desc "Generate RBS files for base classes"
       task "#{name}:base_class:generate": :environment do
         signature_root_dir.mkpath
@@ -38,7 +41,7 @@ module RbsDiscard
       end
     end
 
-    def define_generate_task
+    def define_generate_task #: void
       desc "Generate RBS files for discardable models"
       task "#{name}:generate" do
         require "rbs_discard" # load RbsDraper lazily
@@ -54,7 +57,7 @@ module RbsDiscard
       end
     end
 
-    def define_clean_task
+    def define_clean_task #: void
       desc "Clean RBS files for discardable models"
       task "#{name}:clean" do
         signature_root_dir.rmtree if signature_root_dir.exist?
