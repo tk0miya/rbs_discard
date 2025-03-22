@@ -19,3 +19,4 @@ gems:
 
   - name: fileutils
   - name: pathname
+  - name: rbs

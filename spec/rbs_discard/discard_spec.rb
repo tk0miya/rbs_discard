@@ -26,12 +26,12 @@ RSpec.describe RbsDiscard::Discard do
       is_expected.to eq(<<~RBS)
         # resolve-type-names: false
 
-        class Account < ::ActiveRecord::Base
-          class ActiveRecord_Relation
+        class ::Account < ::ActiveRecord::Base
+          class ::Account::ActiveRecord_Relation
             include ::Discard::Model::Relation
           end
 
-          class ActiveRecord_Associations_CollectionProxy
+          class ::Account::ActiveRecord_Associations_CollectionProxy
             include ::Discard::Model::Relation
           end
 

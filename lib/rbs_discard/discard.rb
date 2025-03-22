@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rbs"
+require_relative "utils"
 
 module RbsDiscard
   module Discard
@@ -18,6 +19,8 @@ module RbsDiscard
     end
 
     class Generator
+      include Utils
+
       attr_reader :klass #: singleton(Discard::Model)
       attr_reader :klass_name #: String
 
@@ -32,11 +35,11 @@ module RbsDiscard
           # resolve-type-names: false
 
           #{header}
-            class ActiveRecord_Relation
+            class ::#{klass_name}::ActiveRecord_Relation
               include ::Discard::Model::Relation
             end
 
-            class ActiveRecord_Associations_CollectionProxy
+            class ::#{klass_name}::ActiveRecord_Associations_CollectionProxy
               include ::Discard::Model::Relation
             end
 
@@ -62,19 +65,17 @@ module RbsDiscard
       end
 
       def header #: String
-        namespace = +""
-        klass_name.split("::").map do |mod_name|
-          namespace += "::#{mod_name}"
-          mod_object = Object.const_get(namespace)
+        klass_to_names(klass).map do |name|
+          mod_object = Object.const_get(name.to_s)
           case mod_object
           when Class
             # @type var superclass: Class
             superclass = _ = mod_object.superclass
             superclass_name = superclass.name || "::Object"
 
-            "class #{mod_name} < ::#{superclass_name}"
+            "class #{name} < ::#{superclass_name}"
           when Module
-            "module #{mod_name}"
+            "module #{name}"
           else
             raise "unreachable"
           end

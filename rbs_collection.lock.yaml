@@ -237,6 +237,10 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: optparse
+  version: '0'
+  source:
+    type: stdlib
 - name: parallel
   version: '1.20'
   source:
@@ -305,6 +309,10 @@ gems:
     revision: f720796536d6ecc9450fb43cdfc5b894a5e80ffd
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: rbs
+  version: 3.9.0
+  source:
+    type: rubygems
 - name: rdoc
   version: '0'
   source:
