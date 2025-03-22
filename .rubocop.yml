@@ -1,3 +1,7 @@
+plugins:
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 3.2
 
@@ -28,3 +32,9 @@ Layout/MethodLength:
 
 Metrics/AbcSize:
   Max: 20
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/NamedSubject:
+  Enabled: false

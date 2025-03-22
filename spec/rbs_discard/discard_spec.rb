@@ -13,7 +13,7 @@ RSpec.describe RbsDiscard::Discard do
     subject { described_class.all }
 
     it "returns all classes that include Discard::Model" do
-      is_expected.to eq([Account])
+      expect(subject).to eq([Account])
     end
   end
 
@@ -23,7 +23,7 @@ RSpec.describe RbsDiscard::Discard do
     let(:klass) { Account }
 
     it "generates RBS" do
-      is_expected.to eq(<<~RBS)
+      expect(subject).to eq(<<~RBS)
         # resolve-type-names: false
 
         class ::Account < ::ActiveRecord::Base
