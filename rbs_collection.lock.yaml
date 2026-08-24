@@ -334,7 +334,7 @@ gems:
   source:
     type: stdlib
 - name: rbs
-  version: 4.0.3
+  version: 4.1.2
   source:
     type: rubygems
 - name: rbs-inline
@@ -374,7 +374,11 @@ gems:
   source:
     type: rubygems
 - name: rubocop-rbs_inline
-  version: 1.8.0
+  version: 2.0.0
+  source:
+    type: rubygems
+- name: rubocop-rspec-unused-let
+  version: 1.2.0
   source:
     type: rubygems
 - name: securerandom
@@ -414,6 +418,10 @@ gems:
   source:
     type: stdlib
 - name: timeout
+  version: '0'
+  source:
+    type: stdlib
+- name: tmpdir
   version: '0'
   source:
     type: stdlib
